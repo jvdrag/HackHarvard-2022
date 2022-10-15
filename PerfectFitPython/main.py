@@ -62,15 +62,44 @@ def pixelToInches(line, ratio):
     L = L_px/ratio
     return L
 
+def TakePicture():
+    cam = cv2.VideoCapture(0)
+ 
+    cv2.namedWindow("Webcam Screenshot")
+    
+    img_counter = 0
+    img_name = ''
+    while True:
+        ret, frame = cam.read()
+        if not ret:
+            print("failed to grab frame")
+            break
+        cv2.imshow("test", frame)
+    
+        k = cv2.waitKey(1)
+        if k%256 == 27:
+            # ESC pressed
+            print("Escape hit, closing...")
+            break
+        elif k%256 == 32:
+            # SPACE pressed
+            img_name = "opencv_frame_{}.png".format(img_counter)
+            cv2.imwrite(img_name, frame)
+            print("{} written!".format(img_name))
+            img_counter += 1
+    
+    cam.release()
+    
+    cv2.destroyAllWindows()
+    return img_name
 
 if __name__=="__main__":
-    print("Hello")
-    # reading the image
-    img = cv2.imread("imgs/2.jpg", cv2.IMREAD_UNCHANGED)
-        
+    name = TakePicture()
+    #  reading the image
+    img = cv2.imread(name, cv2.IMREAD_UNCHANGED) 
      
     # displaying the image
-    scale_percent = 30 # percent of original size
+    scale_percent = 100 # percent of original size
     width = int(img.shape[1] * scale_percent / 100)
     height = int(img.shape[0] * scale_percent / 100)
     dim = (width, height)
@@ -87,8 +116,22 @@ if __name__=="__main__":
     ratio = setPixelRatio(cardPoints)
     d1_1 = pixelToInches(linePoints, ratio)
     d2_1 = pixelToInches(linePoints2, ratio)
-
+    cv2.destroyAllWindows()
+    
+    name = TakePicture()
+    #  reading the image
+    img = cv2.imread(name, cv2.IMREAD_UNCHANGED) 
+     
+    # displaying the image
+    scale_percent = 100 # percent of original size
+    width = int(img.shape[1] * scale_percent / 100)
+    height = int(img.shape[0] * scale_percent / 100)
+    dim = (width, height)
+    resized_down = cv2.resize(img, dim, interpolation = cv2.INTER_AREA)
+    cv2.imshow('image', resized_down)
     clickNum=0
+    linePoints=[]
+    cardPoints=[]
     cv2.setMouseCallback('image', click_event)
     cv2.waitKey(0)
     ratio2 = setPixelRatio(cardPoints)
