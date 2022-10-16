@@ -1,6 +1,6 @@
 # Life_Hack, Data Hack and Best Sustainability Hack 2022
 HackHarvard 2022
-[Best Lifehack Hack + Sustainability Prize (Sponsored by RaptorMaps]
+[Best Lifehack Hack + Sustainability Prize + Data hack]
 
 ## About
 Sustainability-focused Computer Vision model on helping women/people identify their correct bra and clothing sizes, then pair them with a tailor who will make the proper fitting garments for them by applying sustainability principles.
