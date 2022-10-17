@@ -27,8 +27,7 @@ To be able to get the actual values in inches, we need to use an object with pra
 ## Visualization of Backend
 ![Picture1](https://user-images.githubusercontent.com/33704683/196041748-aa05c593-c3e2-4622-84a0-bc5253b4fd4f.png)
 
-## Pipeline
-![pipeline diagram](images/pipeline_diagram.png)
+
 
 ## Languages, Packages, and Technologies
 • **`Python`**: back end and Natural Language Processing
